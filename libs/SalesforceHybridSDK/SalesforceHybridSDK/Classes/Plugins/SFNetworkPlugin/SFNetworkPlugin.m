@@ -124,7 +124,7 @@ static NSString * const kDoesNotRequireAuthentication = @"doesNotRequireAuthenti
     [restApiInstance sendRESTRequest:request
                                       failBlock:^(NSError *e, NSURLResponse *rawResponse) {
                                           __strong typeof(self) strongSelf = weakSelf;
-                                          CDVPluginResult *pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsString:e.localizedDescription];
+                                          CDVPluginResult *pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsString:e.userInfo.jsonString];
                                           [strongSelf.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
                                       }
                                   completeBlock:^(id response, NSURLResponse *rawResponse) {
